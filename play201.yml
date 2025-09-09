@@ -1,0 +1,7 @@
+---
+- name: Shutdown server 
+  hosts: all 
+  become: Yes
+  tasks: 
+    - name: Shutdown the server
+      
