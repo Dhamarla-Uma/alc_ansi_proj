@@ -33,4 +33,4 @@
         key: "{{ lookup('file', 'keys/' + item.name + '.pub') }}"
       loop: "{{ users }}"
       when: lookup('file', 'keys/' + item.name + '.pub', errors='ignore') != ""
-
+#This is user management playbook.
