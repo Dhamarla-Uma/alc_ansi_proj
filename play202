@@ -1,0 +1,36 @@
+---
+- name: User Management Playbook
+  hosts: all
+  become: yes
+
+  vars:
+    users:
+      - name: alice
+        groups: "sudo"
+        shell: /bin/bash
+      - name: bob
+        groups: "developers"
+        shell: /bin/zsh
+
+  tasks:
+    - name: Ensure groups exist
+      ansible.builtin.group:
+        name: "{{ item.groups }}"
+        state: present
+      loop: "{{ users }}"
+
+    - name: Create users
+      ansible.builtin.user:
+        name: "{{ item.name }}"
+        groups: "{{ item.groups }}"
+        shell: "{{ item.shell }}"
+        state: present
+      loop: "{{ users }}"
+
+    - name: Set authorized SSH key for users
+      ansible.builtin.authorized_key:
+        user: "{{ item.name }}"
+        key: "{{ lookup('file', 'keys/' + item.name + '.pub') }}"
+      loop: "{{ users }}"
+      when: lookup('file', 'keys/' + item.name + '.pub', errors='ignore') != ""
+
