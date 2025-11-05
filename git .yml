@@ -1,0 +1,37 @@
+Git Basic Configuration:-
+#git config --global user.name uma
+#git config --global user.email dhamarlauma@gmail.com
+#git config --list
+Creating Repository:-
+#git init myansi:proj01
+#git clone https://github.com/sanjeevi.m/sanj/ansi.git ---->clone existing repository
+Git Basic work flow:-
+a)check status
+  -> git status
+b)stage the file
+  ->git add filenmae
+  ->git add . --->in working directory
+c)commit changes:-
+ git commit -m "commit message" filename
+ (or)
+ git commit -m "commit msg" .--->commit all
+View commit history:-
+#git log --oneline --graph --decorate --all
+Branching &merging:-
+#git branch feature01 }-->A new branch is created
+#git checkout feature01 -->switch the branch
+#create and swaitch is one command
+#git checkout -b feature01 
+               |                                                                   main branch
+              create branch                        _____._____________._____._____/_
+                                                       __ \_________.________/
+                                                       |                 |
+                                                        checkout from to feature01                 feature01 branch
+
+Merge feature01 to main
+#git checkout main
+#git merge feature01
+Delete the branch
+#git branch -d feature01
+             |
+             delete
