@@ -1,1 +1,21 @@
-nsjdnnjjnj
+---
+- name: Install and start Nginx
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Update apt repository
+      apt:
+        update_cache: yes
+
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Start and enable nginx service
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
