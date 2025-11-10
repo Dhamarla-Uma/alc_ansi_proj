@@ -1,0 +1,26 @@
+---
+- name: Example Playbook
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Install Apache
+      yum:
+        name: httpd
+        state: present
+
+    - name: Start Apache Service
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
+    - name: Create a Homepage
+      copy:
+        content: "Welcome to Apache Server!"
+        dest: /var/www/html/index.html
+        hiiii
+        hello
+        hiii
+        hello
+        hiii
