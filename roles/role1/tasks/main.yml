@@ -1,3 +1,4 @@
+---
 - name: Create a user from vault
   user:
     name: "{{ vault_user_name }}"
